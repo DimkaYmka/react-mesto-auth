@@ -11,7 +11,7 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import EditProfilePopup from "./EditProfilePopup";
 import AddPlacePopup from "./AddPlacePopup";
 
-import { useNavigate, Routes, Route } from 'react-router-dom';
+import { useNavigate, Routes, Route, Navigate } from 'react-router-dom';
 
 import RegisterForm from './RegisterForm';
 import ProtectedRoute from './ProtectedRoute';
@@ -181,6 +181,9 @@ function App() {
               <RegisterForm onInfoTooltipOpen={setIsInfoTooltipOpen} setUser={setUser}/>
             </div>} />
             
+            <Route path='*' element={<Navigate to='/' replace={true} />} />
+
+
           </Routes>
           {loggedIn && <Footer />}
         </div>
