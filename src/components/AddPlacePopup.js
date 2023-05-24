@@ -6,8 +6,6 @@ function AddPlacePopup ({isOpen, onClose, onAddPlace}) {
 const [name, setName] = useState('');
 const [link, setLink] = useState('');
 
-
-
 function handleNameChange (evt) {
   setName(evt.target.value);
 }
@@ -40,6 +38,5 @@ return (
   } />
 )
 }
-
 
 export default AddPlacePopup;

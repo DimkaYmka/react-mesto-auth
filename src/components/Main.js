@@ -5,7 +5,6 @@ import Card from "./Card.js";
 function Main(props) {
   const currentUser = useContext(CurrentUserContext);
 
-
   return (
     <main className="content">
       <section className="profile">
@@ -48,7 +47,6 @@ function Main(props) {
           ))}
         </ul>
       </section>
-
 
     </main>
   )

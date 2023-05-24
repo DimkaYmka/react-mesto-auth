@@ -30,7 +30,7 @@ function Register({onInfoTooltipOpen}) {
     return (
       <div>
         <h2 className="login__title">Регистрация</h2>
-        <form action="#" className="login__form" onSubmit={handleSubmit} noValidate >
+        <form action="#" className="login__form" onSubmit={handleSubmit}  >
           <input className="login__input login__input_email" id="input-url-login" required type="email" name="email"
             placeholder="Email" onChange={handleChange} value={formValue.email} />
           <span className="login__input-error input-url-login-error "></span>

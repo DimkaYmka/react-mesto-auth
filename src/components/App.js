@@ -24,14 +24,27 @@ function App() {
   const [currentUser, setCurrentUser] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false); //false по умолчанию
   const [userName, setUser] = useState('');
-
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
 
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
+  // useEffect(() => {
 
+  //   Promise.all([api.getUserData(), api.getInitialCards()])
+  //     .then(res => {
+  //       const [userData, cardsArray] = res;
+  //       setCards(cardsArray);
+  //       setCurrentUser(userData);
+  //     })
+  //     .catch(err => console.error(err));
+  // }, []);
+  useEffect(() => {
+    if (loggedIn) {
     Promise.all([api.getUserData(), api.getInitialCards()])
       .then(res => {
         const [userData, cardsArray] = res;
@@ -39,8 +52,8 @@ function App() {
         setCurrentUser(userData);
       })
       .catch(err => console.error(err));
-  }, []);
-
+    }
+  }, [loggedIn]);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
@@ -52,17 +65,11 @@ function App() {
       .catch(err => console.log(err));
   }
 
-
   function handleCardDelete(cardId) {
     api.deleteCard(cardId)
       .then(() => setCards(cards.filter(c => c._id !== cardId)))
       .catch(err => console.log(err));
   }
-
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -146,8 +153,6 @@ function App() {
     localStorage.removeItem("jwt");
 };
 
-
-  
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -167,8 +172,6 @@ function App() {
                   onCardLike={handleCardLike}
                   onCardDelete={handleCardDelete}
                   loggedIn={loggedIn}
-
-
                 />
               }
             />
@@ -182,7 +185,6 @@ function App() {
             </div>} />
             
             <Route path='*' element={<Navigate to='/' replace={true} />} />
-
 
           </Routes>
           {loggedIn && <Footer />}
@@ -202,10 +204,7 @@ function App() {
         <InfoTooltip
            isOpenConfig={isInfoTooltipOpen}
           onClose={closeAllPopups}
-
         />
-
-
       </div>
     </CurrentUserContext.Provider>
 

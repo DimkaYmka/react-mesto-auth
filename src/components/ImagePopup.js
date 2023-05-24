@@ -1,7 +1,5 @@
 import ClosePopup from '../images/Close.svg';
 
-
-
 function ImagePopup({card, onClose}) {
 
   return (
@@ -17,8 +15,6 @@ function ImagePopup({card, onClose}) {
         <h3 className="popup__big-title">{card && card.name}</h3>
       </div>
     </div>
-
-
   )
 }
 

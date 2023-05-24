@@ -2,11 +2,6 @@ import iconDone from '../images/Done.svg';
 import iconError from '../images/Error.svg';
 import ClosePopup from '../images/Close.svg';
 
-
-
-
-
-
 function InfoTooltip({ onClose, isOpenConfig }) {
   return (
     <section

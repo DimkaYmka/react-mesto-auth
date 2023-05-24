@@ -2,7 +2,6 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import * as auth from "../utils/Auth";
 
-
 function LoginForm({ setLoggedIn, handleLogin, onInfoTooltipOpen, setUser }) {
   const [formValue, setFormValue] = useState({
     email: '',
@@ -35,15 +34,12 @@ function LoginForm({ setLoggedIn, handleLogin, onInfoTooltipOpen, setUser }) {
         onInfoTooltipOpen({ isOpen: true, status: false });
         console.log(err);
       })
-
-      
-
   }
   return (
 
     <div className="login">
       <h2 className="login__title">Вход</h2>
-      <form action="#" className="login__form" onSubmit={handleSubmit} noValidate>
+      <form action="#" className="login__form" onSubmit={handleSubmit} >
         <input className="login__input login__input_email" id="input-url-login" required type="email" name="email"
           placeholder="Email" onChange={handleChange} />
         <span className="login__input-error input-url-login-error "></span>
@@ -53,7 +49,6 @@ function LoginForm({ setLoggedIn, handleLogin, onInfoTooltipOpen, setUser }) {
         <button className="login__button" type="submit">Войти</button>
       </form>
     </div>
-
   )
 };
 

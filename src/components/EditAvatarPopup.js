@@ -4,7 +4,6 @@ import { useRef, useEffect } from 'react';
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
 
-
   const ref = useRef();
 
   useEffect(() => {

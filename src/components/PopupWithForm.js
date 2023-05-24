@@ -18,7 +18,7 @@ function PopupWithForm({
         </button>
         <h3 className="popup__title">{title}</h3>
         
-        <form action="#" onSubmit={onSubmit} name={`${name}-form`} className="popup__form popup__form-card" noValidate>
+        <form action="#" onSubmit={onSubmit} name={`${name}-form`} className="popup__form popup__form-card" >
         {children}
           <button className="popup__button popup__save-btn" type="submit">{btnText}</button>
         </form>
